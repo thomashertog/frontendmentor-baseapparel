@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Josefin';
+    src: url('JosefinSans-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Josefin';
+    src: url('JosefinSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Josefin';
+    src: url('JosefinSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+:root{
+    --desaturated-red: hsl(0, 36%, 70%);
+    --soft-red: hsl(0, 93%, 68%);
+
+    --dark-grayish-red: hsl(0, 6%, 24%);
+
+    --linear-white: 135deg, hsl(0,0%,100%), hsl(0, 100%, 98%);
+    --linear-white: 135deg, hsl(0,80%,86%), hsl(0, 74%, 74%);
+}
+
+body{
+    font-size: 16px;
+    font-family: 'Josefin', sans-serif;
+}
