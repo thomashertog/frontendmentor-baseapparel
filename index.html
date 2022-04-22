@@ -17,14 +17,27 @@
   </style>
 </head>
 <body>
-
-  We're coming soon
-
-  Hello fellow shoppers! We're currently building our new fashion store. 
-  Add your email below to stay up-to-date with announcements and our launch deals.
-
-  Email Address
-  
+  <main>
+    <img src="images/logo.svg" alt="Base Apparel logo">
+    <div class="content">
+      <div class="title">We're <H2>Coming Soon</H2></div>
+      <p>
+        Hello fellow shoppers! We're currently building our new fashion store.
+        Add your email below to stay up-to-date with announcements and our launch deals.
+      </p>
+      <form>
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" class="empty-input">
+        <p>Please provide a valid email</p>
+        <button type="button" aria-label="Submit"><img src="images/icon-arrow.svg" alt="" aria-hidden="true"></button>
+      </form>
+    </div>
+    <picture>
+      <source media="(min-width: 1000px)" srcset="images/hero-desktop.jpg">
+      <source srcset="images/hero-mobile.jpg">
+      <img src="images/hero-mobile.jpg" />
+    </picture>
+  </main>
   <footer>
     <p class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
