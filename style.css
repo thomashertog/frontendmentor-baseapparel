@@ -5,7 +5,7 @@
     --dark-grayish-red: hsl(0, 6%, 24%);
 
     --linear-white: 135deg, hsl(0,0%,100%), hsl(0, 100%, 98%);
-    --linear-white: 135deg, hsl(0,80%,86%), hsl(0, 74%, 74%);
+    --linear-red: 135deg, hsl(0,80%,86%), hsl(0, 74%, 74%);
 }
 
 body{
@@ -25,11 +25,27 @@ body{
     grid-template-rows: min-content 1fr 1em;
 }
 
-.content {
+header{
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1/-1;
-    align-content: start;
+}
+
+body header{
+    grid-column: 1/-1;
+}
+
+header > *{
+    grid-column: 2;
+}
+
+header .hero{
+    grid-column: 1/-1;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
 }
 
 .content p{
@@ -45,9 +61,8 @@ body > * {
     grid-column: 2;
 }
 
-.content picture{
+header picture{
     grid-column: 1/-1;
-    order: -1;
 }
 
 .hero :is(img, picture){
@@ -55,12 +70,12 @@ body > * {
 }
 
 .logo{
-    grid-area: logo;
+    max-height: 1.5em;
     margin-block: 2rem;
 }
 
 .title{
-    margin-block-start: 3rem;
+    margin-block-start: 4rem;
     font-size: 2.5rem;
     text-transform: uppercase;
     text-align: center;
@@ -85,4 +100,136 @@ input{
     border-radius: 2em;
     padding: .5em;
     background-color: transparent;
+}
+
+form{
+    display: grid;
+    grid-template-columns: 1fr 5rem;
+    margin-block: 1.5em;
+}
+
+form :is(label, input){
+    grid-column-start: 1;
+    grid-row: 1;
+    padding: .5em 1em;
+}
+
+form input{
+    grid-column-end: -1;
+    line-height: 1;
+}
+
+form input:is(:focus-visible, :not(.empty-input)) + label{
+    opacity: 0;
+}
+
+form input:valid ~ p{
+    display: none;
+}
+
+form p{
+    grid-column: 1;
+}
+
+form button{
+    grid-row: 1;
+    grid-column: 2;
+
+    background: linear-gradient(var(--linear-red));
+    border: none;
+    border-radius: 2em;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+button:hover{
+    background: linear-gradient(var(--linear-red)),
+    rgba(255,255,255,.5);
+    background-blend-mode: color;
+}
+
+button img{
+    max-height: 1em;
+}
+
+@media screen and (min-width: 1000px){
+    body{
+        --whitespacing: 5rem;
+        grid-template-columns: 3fr 2fr;
+        grid-template-rows: 3em 1fr;
+    }
+
+    body > *{
+        grid-column: 1
+    }
+
+    body > header{
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+    }
+
+    header .hero{
+        grid-row: 1/-1;
+        grid-column: 2;
+    }
+
+    .hero img{
+        min-height: 100vh;
+        object-fit: cover;
+    }
+
+    header .logo{
+        grid-column: 1;
+        margin-inline-start: var(--whitespacing);
+    }
+    
+    .content{
+        grid-row: 2;
+        margin-inline: var(--whitespacing);
+        margin-block: auto;
+    }
+    
+    .content > *{
+        grid-column: 1;
+    }
+
+    .content picture{
+        grid-column: 2;
+        grid-row: 1/-1;
+    }
+
+    .title{
+        font-size: 3.5rem;
+        text-align: left;
+        max-width: min-content;
+    }
+
+    form{
+        grid-template-columns: 1fr 6rem;
+    }
+
+    form :is(label, input){
+        padding: 1em 2em;
+    }
+
+    input:invalid:after{
+        content: '';
+        background-color: red;
+        width: 1rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+    }
+
+    .content p{
+        text-align: left;
+    }
+
+    form p{
+        margin-inline-start: 2rem;
+    }
 }
