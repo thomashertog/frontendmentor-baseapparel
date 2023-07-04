@@ -157,6 +157,17 @@ button img{
     max-height: 1em;
 }
 
+.input-wrapper:has(input:invalid)::after{
+    content: url('./images/icon-error.svg');
+    position: relative;
+    top: -2em;
+    left: -2em;
+}
+
+.input-wrapper{
+    display: contents;
+}
+
 @media screen and (min-width: 1000px){
     body{
         --whitespacing: 5rem;
@@ -217,19 +228,16 @@ button img{
         padding: 1em 2em;
     }
 
-    input:invalid:after{
-        content: '';
-        background-color: red;
-        width: 1rem;
-        aspect-ratio: 1;
-        border-radius: 50%;
-    }
-
     .content p{
         text-align: left;
     }
 
     form p{
         margin-inline-start: 2rem;
+    }
+
+    .input-wrapper:has(input:invalid)::after{
+        top: -2.5em;
+        left: -2.5em;
     }
 }
